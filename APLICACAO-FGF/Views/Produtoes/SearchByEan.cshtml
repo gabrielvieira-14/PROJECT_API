@@ -1,0 +1,59 @@
+﻿@model APLICACAO_FGF.Models.Produto
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>FGF Revisão Fiscal</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar novo produto </a>
+
+    <div class="row">
+    <div class="col-md-6">
+        <form asp-action="SearchByEan">
+            <div class="form-group d-flex"> 
+                <label for="Id" class="control-label fw-bold">Buscar por Ean</label>
+                <input name="Id" class="form-control" maxlength="14" />
+                <input type="submit" value="Pesquisar" class="btn btn-secondary" style="margin-left: 1rem" />
+            </div>       
+        </form>
+    </div>
+</div>
+</p>
+
+ <div>
+    <a asp-action="Index">Retornar</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ean)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Ean)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="model.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="model.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="model.Id">Deletar</a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

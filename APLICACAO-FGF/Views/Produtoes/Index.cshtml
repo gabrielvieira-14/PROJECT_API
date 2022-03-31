@@ -1,0 +1,80 @@
+﻿@model IEnumerable<APLICACAO_FGF.Models.Produto>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>FGF Revisão Fiscal</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar novo produto </a>
+    
+     <div class="col-md-5">
+            <div class="form-group d-flex"> 
+                <label for="Id" class="control-label fw-bold">Buscar por:</label> 
+      </div>
+      </div>
+
+    <div class="row">
+    <div class="col-md-8">
+        <form asp-action="SearchById">
+            <div class="form-group d-flex"> 
+                <label for="Id" class="control-label fw-bold">Código Id</label>
+                <input name="Id" class="form-control" maxlength="5" />
+                <input type="submit" value="Pesquisar" class="btn btn-secondary" style="margin-left: 1rem" />
+            </div>       
+        </form>
+    </div>
+</div>
+</p>
+
+    <div class="row">
+    <div class="col-md-8">
+        <form asp-action="SearchByEan">
+            <div class="form-group d-flex"> 
+                <label for="Ean" class="control-label fw-bold">Código de Barras</label>
+                <input name="Ean" class="form-control" maxlength="14" />
+                <input type="submit" value="Pesquisar" class="btn btn-secondary" style="margin-left: 1rem" />
+            </div>       
+        </form>
+    </div>
+</div>
+</p>
+
+<table class="table text-center">
+    <thead>
+        <tr>
+             <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ean)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ean)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
